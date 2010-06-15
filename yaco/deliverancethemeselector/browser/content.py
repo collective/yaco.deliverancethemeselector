@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from zope.lifecycleevent import modified
 from zope.interface import implements
-from zope.interface import directlyProvides
+from zope.interface import alsoProvides
 from zope.interface import noLongerProvides
 
 from z3c.form import form
@@ -68,19 +67,21 @@ class ThemeSelectorForm( form.Form ):
         plone_utils = getToolByName(self.context, 'plone_utils')
 
         if not IDTSSupport.providedBy(self.context):
-            plone_utils.addPortalMessage(_("This object don't have the Deliverance theme selector enable."))
+            plone_utils.addPortalMessage(
+                _("This object don't have the Deliverance theme selector enable"),
+                  "warning")
             self.request.response.redirect(self.context.absolute_url())
             return
 
         annotation = IDTSSettingsAnnotations(self.context)
         annotation.setTheme(theme)
-        plone_utils.addPortalMessage(_("Changes saved.."))
+        plone_utils.addPortalMessage(_("Changes saved"))
         self.request.response.redirect(self.context.absolute_url())
 
     @button.buttonAndHandler(u'Cancel')
     def handleCancel(self, action):
         plone_utils = getToolByName(self.context, 'plone_utils')
-        plone_utils.addPortalMessage(_("Edit cancelled."))
+        plone_utils.addPortalMessage(_("Edit cancelled"))
         self.request.response.redirect(self.context.absolute_url())
 
 ThemeSelectorView = wrap_form(ThemeSelectorForm)
@@ -93,17 +94,17 @@ class EnableThemeSelectorForm( form.Form ):
 
     @button.buttonAndHandler(u'Submit')
     def handleApply(self, action):
-        directlyProvides(self.context, IDTSSupport)
-        modified(self.context)
+        alsoProvides(self.context, IDTSSupport)
+        self.context.reindexObject(idxs=['object_provides'])
         plone_utils = getToolByName(self.context, 'plone_utils')
-        plone_utils.addPortalMessage(_("Deliverance theme selector enable."))
+        plone_utils.addPortalMessage(_("Deliverance theme selector enable"))
         self.request.response.redirect(
             '%s/%s' % (self.context.absolute_url(), '@@dts-settings'))
 
     @button.buttonAndHandler(u'Cancel')
     def handleCancel(self, action):
         plone_utils = getToolByName(self.context, 'plone_utils')
-        plone_utils.addPortalMessage(_("Accion cancelled."))
+        plone_utils.addPortalMessage(_("Accion cancelled"))
         self.request.response.redirect(self.context.absolute_url())
 
 EnableThemeSelectorView = wrap_form(EnableThemeSelectorForm)
@@ -119,21 +120,23 @@ class DisableThemeSelectorForm( form.Form ):
 
         plone_utils = getToolByName(self.context, 'plone_utils')
         if not IDTSSupport.providedBy(self.context):
-            plone_utils.addPortalMessage(_("This object don't have the Deliverance theme selector enable."))
+            plone_utils.addPortalMessage(
+                _("This object don't have the Deliverance theme selector enable"),
+                  "warning")
             self.request.response.redirect(self.context.absolute_url())
             return
 
         annotation = IDTSSettingsAnnotations(self.context)
         annotation.remove()
         noLongerProvides(self.context, IDTSSupport)
-        modified(self.context)
-        plone_utils.addPortalMessage(_("Deliverance theme selector disable."))
+        self.context.reindexObject(idxs=['object_provides'])
+        plone_utils.addPortalMessage(_("Deliverance theme selector disable"))
         self.request.response.redirect(self.context.absolute_url())
 
     @button.buttonAndHandler(u'Cancel')
     def handleCancel(self, action):
         plone_utils = getToolByName(self.context, 'plone_utils')
-        plone_utils.addPortalMessage(_("Accion cancelled."))
+        plone_utils.addPortalMessage(_("Accion cancelled"))
         self.request.response.redirect(self.context.absolute_url())
 
 DisableThemeSelectorView = wrap_form(DisableThemeSelectorForm)

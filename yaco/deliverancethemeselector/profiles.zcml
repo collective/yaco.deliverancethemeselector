@@ -7,7 +7,7 @@
       name="default"
       title="Deliverance Theme Selector"
       directory="profiles/default"
-      description="Extension profile for the Delevirance Theme Selector."
+      description="Extension profile for the Deliverance Theme Selector."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       />
