@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0a1'
+version = '1.0a2'
 
 setup(name='yaco.deliverancethemeselector',
       version=version,
@@ -17,7 +17,7 @@ setup(name='yaco.deliverancethemeselector',
       keywords='',
       author='Juan A. Diaz [nueces]',
       author_email='jdiaz@menttes.com',
-      url='https://svn.plone.org/svn/collective/yaco.deliverancethemeselector',
+      url='http://pypi.python.org/pypi/yaco.deliverancethemeselector',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['yaco'],
