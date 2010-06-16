@@ -57,10 +57,10 @@ class ContentControl( BrowserView ):
 class ThemeSelectorForm( form.Form ):
     fields = field.Fields(IThemeSelector)
     label = _(u"Select the deliverance theme to be apply in this section")
-    description = _(u"Select one item from the drop down menu and press on 'Submit' to save your selection")
+    description = _(u"Select one item from the drop down menu and press on 'Save' to save your selection")
     ignoreContext = True # don't use context to get widget data
 
-    @button.buttonAndHandler(u'Submit')
+    @button.buttonAndHandler(_(u'Save'))
     def handleApply(self, action):
         data, errors = self.extractData()
         theme = data.get('theme', None)
@@ -78,7 +78,7 @@ class ThemeSelectorForm( form.Form ):
         plone_utils.addPortalMessage(_("Changes saved"))
         self.request.response.redirect(self.context.absolute_url())
 
-    @button.buttonAndHandler(u'Cancel')
+    @button.buttonAndHandler(_(u'Cancel'))
     def handleCancel(self, action):
         plone_utils = getToolByName(self.context, 'plone_utils')
         plone_utils.addPortalMessage(_("Edit cancelled"))
@@ -89,10 +89,10 @@ ThemeSelectorView = wrap_form(ThemeSelectorForm)
 
 class EnableThemeSelectorForm( form.Form ):
     label = _(u"Enable Deliverance Theme Selector for this section")
-    description = _(u"To enable a specific theme for this section 'press Submit'."
+    description = _(u"To enable a specific theme for this section press 'Save'. "
                      "If you are not sure about this action press 'Cancel'.")
 
-    @button.buttonAndHandler(u'Submit')
+    @button.buttonAndHandler(_(u'Save'))
     def handleApply(self, action):
         alsoProvides(self.context, IDTSSupport)
         self.context.reindexObject(idxs=['object_provides'])
@@ -101,7 +101,7 @@ class EnableThemeSelectorForm( form.Form ):
         self.request.response.redirect(
             '%s/%s' % (self.context.absolute_url(), '@@dts-settings'))
 
-    @button.buttonAndHandler(u'Cancel')
+    @button.buttonAndHandler(_(u'Cancel'))
     def handleCancel(self, action):
         plone_utils = getToolByName(self.context, 'plone_utils')
         plone_utils.addPortalMessage(_("Accion cancelled"))
@@ -112,10 +112,10 @@ EnableThemeSelectorView = wrap_form(EnableThemeSelectorForm)
 
 class DisableThemeSelectorForm( form.Form ):
     label = _(u"Disable Deliverance Theme Selector for this section")
-    description = _(u"You are about to disable the specific theme for this section."
-                     "If you are not sure about this action press 'Cancel' or on 'Submit' to make the changes.")
+    description = _(u"You are about to disable the specific theme for this section. "
+                     "If you are not sure about this action press 'Cancel' or on 'Save' to make the changes.")
 
-    @button.buttonAndHandler(u'Submit')
+    @button.buttonAndHandler(_(u'Save'))
     def handleApply(self, action):
 
         plone_utils = getToolByName(self.context, 'plone_utils')
@@ -133,7 +133,7 @@ class DisableThemeSelectorForm( form.Form ):
         plone_utils.addPortalMessage(_("Deliverance theme selector disable"))
         self.request.response.redirect(self.context.absolute_url())
 
-    @button.buttonAndHandler(u'Cancel')
+    @button.buttonAndHandler(_(u'Cancel'))
     def handleCancel(self, action):
         plone_utils = getToolByName(self.context, 'plone_utils')
         plone_utils.addPortalMessage(_("Accion cancelled"))

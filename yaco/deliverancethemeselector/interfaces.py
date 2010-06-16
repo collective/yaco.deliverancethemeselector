@@ -13,9 +13,9 @@ class IDeliveranceThemeSelectorSettings(Interface):
 
     availableThemes = schema.List(
         title = _(u"Available Themes"),
-        description = _(u"List of available themes to use with deliverance."
+        description = _(u"List of available themes to use with deliverance. "
                          "Format is 'ThemerName:ClassName'"),
-        value_type = schema.BytesLine(title = u'Item'),
+        value_type = schema.BytesLine(title = _(u'Item')),
     )
 
 class IDTSSupport(Interface):
