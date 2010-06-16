@@ -65,7 +65,7 @@ Enable Deliverance Theme Selector in the new object 'folder0'
 
 Now Confirm the action
 
-    >>> browser.getControl('Submit').click()
+    >>> browser.getControl('Save').click()
     >>> "Deliverance theme selector enable" in browser.contents
     True
 
@@ -80,7 +80,7 @@ The first option is selected by default
 
 So we are going to use that option, and save the form
 
-    >>> browser.getControl('Submit').click()
+    >>> browser.getControl('Save').click()
     >>> "Changes saved" in browser.contents
     True
 
@@ -116,7 +116,7 @@ Change the css class in the 'DTS Settings' for the 'folder0' object
 
     >>> ctrl = browser.getControl(name='form.widgets.theme:list')
     >>> ctrl.getControl('ClassB').click()
-    >>> browser.getControl('Submit').click()
+    >>> browser.getControl('Save').click()
     >>> "Changes saved" in browser.contents
     True
 
@@ -140,7 +140,7 @@ Enable Deliverance Theme Selector in the object 'folder1'
 
 Confirm the action
 
-    >>> browser.getControl('Submit').click()
+    >>> browser.getControl('Save').click()
     >>> "Deliverance theme selector enable" in browser.contents
     True
 
@@ -148,7 +148,7 @@ And select the Class for this Section
 
     >>> ctrl = browser.getControl(name='form.widgets.theme:list')
     >>> ctrl.getControl('ClassC').click()
-    >>> browser.getControl('Submit').click()
+    >>> browser.getControl('Save').click()
     >>> "Changes saved" in browser.contents
     True
 
@@ -185,7 +185,7 @@ But what happens if we disable the DTS support in the parent object? Let see
 
 Confirm the action
 
-    >>> browser.getControl('Submit').click()
+    >>> browser.getControl('Save').click()
     >>> "Deliverance theme selector disable" in browser.contents
     True
 

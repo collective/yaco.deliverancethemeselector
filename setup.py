@@ -25,6 +25,7 @@ setup(name='yaco.deliverancethemeselector',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'plone.app.registry',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
