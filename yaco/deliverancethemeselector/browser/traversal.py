@@ -14,7 +14,11 @@ def setDeliveranceThemeSelectorHeader(site, event):
 
     request = event.request
 
-    stack=[]
+    for skip in ('portal_css', 'portal_javascripts', 'portal_kss'):
+        if skip in request.TraversalRequestNameStack:
+            return
+
+    stack = []
     stack.extend(request.TraversalRequestNameStack)
     stack.extend(site.getPhysicalPath())
     stack = [x for x in stack if not x in ['', '/', 'virtual_hosting']]
@@ -27,7 +31,7 @@ def setDeliveranceThemeSelectorHeader(site, event):
         if not item: break
         path = '/'.join(stack)
 
-        query={}
+        query = {}
         query['id'] = str(item)
         query['path'] = {'query' : path}
         query['object_provides'] = IDTSSupport.__identifier__
