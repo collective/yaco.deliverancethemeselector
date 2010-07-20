@@ -40,6 +40,12 @@ def setDeliveranceThemeSelectorHeader(site, event):
         if brains:
             brain = brains[0]
             objpath = brain.getPath()
-            anno = IDTSSettingsAnnotations(site.unrestrictedTraverse(objpath))
+            try:
+                anno = IDTSSettingsAnnotations(site.unrestrictedTraverse(objpath))
+            except TypeError:
+                # TypeError: 'Could not adapt'
+                # Maybe a problem with catalog
+                # Don't fail, just not set the header
+                continue
             request.response.setHeader(anno.getHeader(), anno.getTheme())
             break
