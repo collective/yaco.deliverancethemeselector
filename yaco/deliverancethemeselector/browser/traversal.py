@@ -1,5 +1,6 @@
 # --*-- coding: utf-8 --*--
 
+from zope.site.hooks import setSite
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
@@ -12,6 +13,8 @@ def setDeliveranceThemeSelectorHeader(site, event):
     if not IPloneSiteRoot.providedBy(site):
         return
 
+    setSite(site) # On occasion, later calls to getSite
+                  # returned None and broke things.
     request = event.request
 
     for skip in ('portal_css', 'portal_javascripts', 'portal_kss'):
