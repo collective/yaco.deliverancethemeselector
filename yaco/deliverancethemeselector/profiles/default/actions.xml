@@ -10,7 +10,7 @@
             <property name="icon_expr"></property>
             <property name="available_expr">python:path('object/@@dts-control').allowEnableThemeSelector()</property>
             <property name="permissions">
-                <element value="Manage portal"/>
+                <element value="yaco.deliverancethemeselector: Manage DTS"/>
             </property>
             <property name="visible">True</property>
         </object>
@@ -22,7 +22,7 @@
             <property name="icon_expr"></property>
             <property name="available_expr">python:path('object/@@dts-control').allowDisableThemeSelector()</property>
             <property name="permissions">
-                <element value="Manage portal"/>
+                <element value="yaco.deliverancethemeselector: Manage DTS"/>
             </property>
             <property name="visible">True</property>
         </object>
@@ -36,7 +36,7 @@
             <property name="icon_expr"></property>
             <property name="available_expr">python:path('object/@@dts-control').allowDTSSettings()</property>
             <property name="permissions">
-                <element value="Manage portal"/>
+                <element value="yaco.deliverancethemeselector: Manage DTS"/>
             </property>
             <property name="visible">True</property>
         </object>

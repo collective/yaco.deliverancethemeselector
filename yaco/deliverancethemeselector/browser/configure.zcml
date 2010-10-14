@@ -7,7 +7,7 @@
     <browser:page
         name="dts-controlpanel"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        permission="cmf.ManagePortal"
+        permission="yaco.deliverancethemeselector.ManageDTS"
         class=".controlpanel.DeliveranceThemeSelectorPanelView"
         />
 
@@ -25,14 +25,14 @@
         for="*"
         name="dts-enable"
         class=".content.EnableThemeSelectorView"
-        permission="cmf.ManagePortal"
+        permission="yaco.deliverancethemeselector.ManageDTS"
         />
 
     <browser:page
         for="*"
         name="dts-disable"
         class=".content.DisableThemeSelectorView"
-        permission="cmf.ManagePortal"
+        permission="yaco.deliverancethemeselector.ManageDTS"
         />
 
     <!-- Settings View -->
@@ -40,7 +40,7 @@
         for="*"
         name="dts-settings"
         class=".content.ThemeSelectorView"
-        permission="cmf.ManagePortal"
+        permission="yaco.deliverancethemeselector.ManageDTS"
         />
 
     <!-- Adapter to store the theme settings in a annotation -->

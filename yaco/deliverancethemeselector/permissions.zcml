@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="yaco.deliverancethemeselector">
+
+    <permission
+        id="yaco.deliverancethemeselector.ManageDTS"
+        title="yaco.deliverancethemeselector: Manage DTS"
+        />
+
+</configure>
